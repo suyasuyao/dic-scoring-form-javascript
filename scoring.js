@@ -18,10 +18,17 @@ $(document).ready(function () {
         $("#sum_indicate").text(sum);
 
         // ここに、上記を参考にして平均点を出力する処理を書き込む
+        let avg = subject_points[0];
+        avg = avg + subject_points[1];
+        avg = avg + subject_points[2];
+        avg = avg + subject_points[3];
+        avg = avg + subject_points[4];
+
     };
 
     function get_achievement() {
         // ここに、ランクの値の文字列（平均点が80点以上なら"A"、60点以上なら"B"、40点以上なら"C"、それ以下なら"D"）を出力する処理を書き込む
+
     }
 
     function get_pass_or_failure() {
