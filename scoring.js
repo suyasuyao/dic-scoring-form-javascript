@@ -10,11 +10,11 @@ $(document).ready(function () {
         ];
 
         // さらにこのような記述をすることで、「合計点：」となっている右の部分に合計点が出力される
-        let sum = subject_points[0];
-        sum = sum + subject_points[1];
-        sum = sum + subject_points[2];
-        sum = sum + subject_points[3];
-        sum = sum + subject_points[4];
+        let sum = 0
+        for (n of subject_points) {
+            sum += n
+        }
+
         $("#sum_indicate").text(sum);
 
         // ここに、上記を参考にして平均点を出力する処理を書き込む
