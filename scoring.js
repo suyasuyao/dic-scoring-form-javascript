@@ -48,7 +48,7 @@ $(document).ready(function () {
         ];
 
         let gouhi = "合格"
-        for (n in subject_points) {
+        for (n of subject_points) {
             if (n < 60) {
                 gouhi = "不合格"
                 break;
@@ -61,6 +61,10 @@ $(document).ready(function () {
     }
 
     function judgement() {
+
+        //id="alert-indicate"となる要素を削除
+        $('#alert-indicate').remove()
+
         // ここに、「最終ジャッジ」のボタンを押したら「あなたの成績はAです。合格です」といった内容を出力する処理を書き込む
         // 下記の記述をすることで、「最終ジャッジ」のボタンを押すと「あなたの成績は（ここに「ランク」の値を入れる）です。（ここに「判定」の値を入れる）です」という文字の入った水色のフキダシが出力される処理が実装される。
         let rank = $("#evaluation").text();
