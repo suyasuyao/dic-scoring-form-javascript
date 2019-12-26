@@ -18,20 +18,54 @@ $(document).ready(function () {
         $("#sum_indicate").text(sum);
 
         // ここに、上記を参考にして平均点を出力する処理を書き込む
+        let avg = sum / 5
+        $("#average_indicate").text(avg);
+
+
     };
 
     function get_achievement() {
+        //平均点を取得する
+        let avg = $("#average_indicate").text();
         // ここに、ランクの値の文字列（平均点が80点以上なら"A"、60点以上なら"B"、40点以上なら"C"、それ以下なら"D"）を出力する処理を書き込む
+        let rank = null;
+        if (avg >= 80) { rank = "A" }
+        else if (avg >= 60) { rank = "B" }
+        else if (avg >= 40) { rank = "C" }
+        else { rank = "D" }
+
+        $("#evaluation").text(rank);
     }
 
     function get_pass_or_failure() {
         // ここに、全ての教科が60点以上なら"合格"の文字列、一つでも60点未満の教科があったら"不合格"の文字列を出す処理を書き込む
+
+        let subject_points = [Number($('#national_language').val()),
+        Number($('#english').val()),
+        Number($('#mathematics').val()),
+        Number($('#science').val()),
+        Number($('#society').val())
+        ];
+
+        let gouhi = "合格"
+        for (n in subject_points) {
+            if (n < 60) {
+                gouhi = "不合格"
+                break;
+            }
+        }
+
+        $("#judge").text(gouhi);
+
+
     }
 
     function judgement() {
         // ここに、「最終ジャッジ」のボタンを押したら「あなたの成績はAです。合格です」といった内容を出力する処理を書き込む
         // 下記の記述をすることで、「最終ジャッジ」のボタンを押すと「あなたの成績は（ここに「ランク」の値を入れる）です。（ここに「判定」の値を入れる）です」という文字の入った水色のフキダシが出力される処理が実装される。
-        $('#declaration').append(`<label id="alert-indicate" class="alert alert-info">あなたの成績は（ここに「ランク」の値を入れる）です。（ここに「判定」の値を入れる）です</label>`);
+        let rank = $("#evaluation").text();
+        let gouhi = $("#judge").text();
+        $('#declaration').append(`<label id="alert-indicate" class="alert alert-info">あなたの成績は${rank}です。${gouhi}です</label>`);
     };
 
     $('#national_language, #english, #mathematics, #science, #society').change(function () {
